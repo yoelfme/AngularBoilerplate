@@ -1,0 +1,25 @@
+{
+  "name": "desarrollo_web_agil",
+  "version": "1.0.0",
+  "description": "A  mini web application with Angular JS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yoelfme/AngularBoilerplate.git"
+  },
+  "keywords": [
+    "angular",
+    "web",
+    "agile",
+    "bower"
+  ],
+  "author": "Yoel Monzon <yoelfme@hotmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yoelfme/AngularBoilerplate/issues"
+  },
+  "homepage": "https://github.com/yoelfme/AngularBoilerplate#readme"
+}
