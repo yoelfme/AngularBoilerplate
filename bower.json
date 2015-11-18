@@ -1,0 +1,17 @@
+{
+  "name": "desarrollo_web_agil",
+  "description": "A  mini web application with Angular JS",
+  "main": "index.js",
+  "authors": [
+    "Yoel Monzon <yoelfme@hotmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "web",
+    "agile",
+    "bower"
+  ],
+  "homepage": "https://github.com/yoelfme/AngularBoilerplate",
+  "moduleType": []
+}
