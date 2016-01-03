@@ -82,6 +82,21 @@ gulp.task('templates', function () {
     .pipe(gulp.dest('./app/scripts'));
 })
 
+// Compress files of CSS and JS
+gulp.task('compress', function () {
+  gulp.src('./app/index.html')
+    .pipe(useref())
+    .pipe(gulpif('*.js', uglify({ mangle: false })))
+    .pipe(gulpif('*.css', minifyCss()))
+    .pipe(gulp.dest('./dist'));
+});
+
+// Copy the dist files to /dist folder
+gulp.task('copy', function () {
+  gulp.src('./app/lib/font-awesome/fonts/**')
+    .pipe(gulp.dest('./dist/fonts'));
+});
+
 // Watch changes that occur in the code y trigger the tasks
 gulp.task('watch', function () {
   gulp.watch(['./app/**/*.html'], ['html']);
@@ -91,3 +106,4 @@ gulp.task('watch', function () {
 });
 
 gulp.task('default', ['server', 'watch']);
+gulp.task('build', ['templates', 'compress', 'copy']);
