@@ -4,7 +4,9 @@ var gulp = require('gulp'),
     stylus = require('gulp-stylus'),
     nib = require('nib'),
     jshint = require('gulp-jshint'),
-    stylish = require('jshint-stylish');
+    stylish = require('jshint-stylish'),
+    inject = require('gulp-inject'),
+    wiredep = require('wiredep').stream;
 
 var historyApiFallback = history({});
 
@@ -36,19 +38,41 @@ gulp.task('html', function () {
 
 // Busca errores en el JS y nos los muestra por pantalla
 // Find erros in JS and then show it
-gulp.task('jshint', function() {
+gulp.task('jshint', function () {
   return gulp.src('./app/scripts/**/*.js')
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('jshint-stylish'))
     .pipe(jshint.reporter('fail'))
 });
 
+// Find in styles and javascript folder files that we created for inject in index.html
+gulp.task('inject', function () {
+  var sources = gulp.src(['./app/scripts/**/*.js', './app/stylesheets/**/*.css']);
+
+  return gulp.src('index.html', { cwd: './app'})
+    .pipe(inject(sources, {
+      read: false,
+      ignorePath: '/app'
+    }))
+    .pipe(gulp.dest('./app'));
+});
+
+// Inject the libraries that we installed via Bower
+gulp.task('wiredep', function () {
+  gulp.src('./app/index.html')
+    .pipe(wiredep({
+      directory: './app/lib'
+    }))
+    .pipe(gulp.dest('./app'));
+});
+
 
 // Watch changes that occur in the code y trigger the tasks
 gulp.task('watch', function () {
   gulp.watch(['./app/**/*.html'], ['html']);
-  gulp.watch(['./app/stylesheets/**/*.styl'], ['css']);
-  gulp.watch(['./app/scripts/**/*.js', './gulpfile.js'], ['jshint']);
+  gulp.watch(['./app/stylesheets/**/*.styl'], ['css', 'inject']);
+  gulp.watch(['./app/scripts/**/*.js', './gulpfile.js'], ['jshint', 'inject']);
+  gulp.watch(['./bower.json'], ['wiredep']);
 });
 
 gulp.task('default', ['server', 'watch']);

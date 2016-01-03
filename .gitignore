@@ -1,3 +1,5 @@
 node_modules/
 
 app/stylesheets/main.css
+
+app/lib

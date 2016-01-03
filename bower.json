@@ -13,5 +13,9 @@
     "bower"
   ],
   "homepage": "https://github.com/yoelfme/AngularBoilerplate",
-  "moduleType": []
+  "moduleType": [],
+  "dependencies": {
+    "bootstrap": "~3.3.6",
+    "angular": "~1.4.8"
+  }
 }
