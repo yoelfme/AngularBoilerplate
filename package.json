@@ -38,6 +38,7 @@
     "jshint": "^2.8.0",
     "jshint-stylish": "^2.1.0",
     "nib": "^1.1.0",
+    "phantomjs": "^1.9.19",
     "wiredep": "^3.0.0"
   }
 }

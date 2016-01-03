@@ -11,7 +11,8 @@ var gulp = require('gulp'),
     gulpif = require('gulp-if'),
     minifyCss = require('gulp-minify-css'),
     useref = require('gulp-useref'),
-    uglify = require('gulp-uglify');
+    uglify = require('gulp-uglify'),
+    uncss = require('gulp-uncss');
 
 var historyApiFallback = history({});
 
@@ -111,6 +112,16 @@ gulp.task('copy', function () {
     .pipe(gulp.dest('./dist/fonts'));
 });
 
+// Remove unused CSS selectors
+gulp.task('uncss', function() {
+  gulp.src('./dist/css/style.min.css')
+    .pipe(uncss({
+       html: ['./app/index.html', './app/views/post-list.tpl.html', './app/views/post-detail.tpl.html']
+    }))
+    .pipe(minifyCss())
+    .pipe(gulp.dest('./dist/css'));
+});
+
 // Watch changes that occur in the code y trigger the tasks
 gulp.task('watch', function () {
   gulp.watch(['./app/**/*.html'], ['html']);
@@ -120,4 +131,4 @@ gulp.task('watch', function () {
 });
 
 gulp.task('default', ['server', 'watch']);
-gulp.task('build', ['templates', 'compress', 'copy']);
+gulp.task('build', ['templates', 'compress', 'copy', 'uncss']);
