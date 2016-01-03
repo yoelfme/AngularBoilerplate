@@ -8,7 +8,7 @@
 
     $routeProvider
       .when('/', {
-        templateUrl: 'views/post-lit.tpl.html',
+        templateUrl: 'views/post-list.tpl.html',
         controller: 'PostListController',
         controllerAs: 'postlist'
       })
