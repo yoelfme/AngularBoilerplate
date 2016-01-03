@@ -34,11 +34,21 @@ gulp.task('html', function () {
     .pipe(connect.reload());
 });
 
+// Busca errores en el JS y nos los muestra por pantalla
+// Find erros in JS and then show it
+gulp.task('jshint', function() {
+  return gulp.src('./app/scripts/**/*.js')
+    .pipe(jshint('.jshintrc'))
+    .pipe(jshint.reporter('jshint-stylish'))
+    .pipe(jshint.reporter('fail'))
+});
+
 
 // Watch changes that occur in the code y trigger the tasks
 gulp.task('watch', function () {
   gulp.watch(['./app/**/*.html'], ['html']);
   gulp.watch(['./app/stylesheets/**/*.styl'], ['css']);
+  gulp.watch(['./app/scripts/**/*.js', ['jshint']]);
 });
 
 gulp.task('default', ['server', 'watch']);
