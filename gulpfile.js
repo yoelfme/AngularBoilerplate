@@ -21,7 +21,21 @@ gulp.task('server', function () {
     root: './app',
     hostname: '0.0.0.0',
     port: 8080,
-    livereload: function (connect, opt) {
+    livereload: true,
+    middleware: function (connect, opt) {
+      console.log('Hola');
+      return [ historyApiFallback ];
+    }
+  });
+});
+
+gulp.task('server-dist', function () {
+  connect.server({
+    root: './dist',
+    hostname: '0.0.0.0',
+    port: 8080,
+    livereload: true,
+    middleware: function (connect, opt) {
       return [ historyApiFallback ];
     }
   });

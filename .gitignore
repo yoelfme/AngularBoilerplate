@@ -5,3 +5,6 @@ app/stylesheets/main.css
 app/lib
 
 dist/
+
+# OSX Files
+.DS_Store
