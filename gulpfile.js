@@ -48,7 +48,7 @@ gulp.task('jshint', function() {
 gulp.task('watch', function () {
   gulp.watch(['./app/**/*.html'], ['html']);
   gulp.watch(['./app/stylesheets/**/*.styl'], ['css']);
-  gulp.watch(['./app/scripts/**/*.js', ['jshint']]);
+  gulp.watch(['./app/scripts/**/*.js', './gulpfile.js'], ['jshint']);
 });
 
 gulp.task('default', ['server', 'watch']);
