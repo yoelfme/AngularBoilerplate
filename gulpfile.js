@@ -116,7 +116,12 @@ gulp.task('copy', function () {
 gulp.task('uncss', function() {
   gulp.src('./dist/css/style.min.css')
     .pipe(uncss({
-       html: ['./app/index.html', './app/views/post-list.tpl.html', './app/views/post-detail.tpl.html']
+      html: [
+        './app/index.html',
+        './app/views/post-list.tpl.html',
+        './app/views/post-detail.tpl.html',
+        './app/views/post-create.tpl.html'
+      ]
     }))
     .pipe(minifyCss())
     .pipe(gulp.dest('./dist/css'));
