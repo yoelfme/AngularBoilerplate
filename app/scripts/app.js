@@ -18,7 +18,7 @@
         controllerAs: 'postdetail'
       })
       .when('/new', {
-        templateUrl: 'views/post-create-tpl.html',
+        templateUrl: 'views/post-create.tpl.html',
         controller: 'PostCreateController',
         controllerAs: 'postcreate'
       });

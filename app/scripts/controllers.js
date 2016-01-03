@@ -11,6 +11,7 @@
     var self = this;
 
     this.create = function () {
+      console.log('Saving...');
       Post.save(self.post);
     };
   }
