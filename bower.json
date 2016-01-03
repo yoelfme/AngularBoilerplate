@@ -18,7 +18,8 @@
     "angular": "~1.4.8",
     "angular-route": "~1.4.8",
     "angular-resource": "~1.4.8",
-    "bootstrap": "~3.3.6"
+    "bootstrap": "~3.3.6",
+    "font-awesome": "fontawesome#~4.5.0"
   },
   "overrides": {
     "bootstrap": {
@@ -26,6 +27,13 @@
         "dist/js/bootstrap.js",
         "dist/css/bootstrap.css",
         "less/bootstrap.less"
+      ]
+    },
+    "font-awesome": {
+      "main": [
+        "less/font-awesome.less",
+        "scss/font-awesome.scss",
+        "css/font-awesome.min.css"
       ]
     }
   }
