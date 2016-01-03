@@ -6,7 +6,12 @@ var gulp = require('gulp'),
     jshint = require('gulp-jshint'),
     stylish = require('jshint-stylish'),
     inject = require('gulp-inject'),
-    wiredep = require('wiredep').stream;
+    wiredep = require('wiredep').stream,
+    templateCache = require('gulp-angular-templatecache'),
+    gulpif = require('gulp-if'),
+    minifyCss = require('gulp-minify-css'),
+    useref = require('gulp-useref'),
+    uglify = require('gulp-uglify');
 
 var historyApiFallback = history({});
 
@@ -66,6 +71,16 @@ gulp.task('wiredep', function () {
     .pipe(gulp.dest('./app'));
 });
 
+// Cache the templates to templates.js
+gulp.task('templates', function () {
+  gulp.src('./app/views/**/*.tpl.html')
+    .pipe(templateCache({
+      root: 'views/',
+      module: 'blog.templates',
+      standalone: true
+    }))
+    .pipe(gulp.dest('./app/scripts'));
+})
 
 // Watch changes that occur in the code y trigger the tasks
 gulp.task('watch', function () {
