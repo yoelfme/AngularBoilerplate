@@ -24,7 +24,6 @@ gulp.task('server', function () {
     port: 8080,
     livereload: true,
     middleware: function (connect, opt) {
-      console.log('Hola');
       return [ historyApiFallback ];
     }
   });
